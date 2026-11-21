@@ -1,0 +1,136 @@
+/* ---------- Page background (one for each theme) ---------- */
+body {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  background-attachment: fixed;
+}
+
+[data-bs-theme="light"] body {
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  background-attachment: fixed;
+}
+
+/* ---------- Display ---------- */
+/* var(--bs-...) values change automatically with the theme */
+.display {
+  background: var(--bs-secondary-bg);
+  color: var(--bs-body-color);
+  min-height: 100px;
+}
+
+.history {
+  font-size: 0.95rem;
+  color: var(--bs-secondary-color);
+  min-height: 24px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.result {
+  font-size: 2.2rem;
+  font-weight: 600;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.result.small-text {
+  font-size: 1.5rem;
+}
+
+/* Hide the scrollbar but keep scrolling */
+.result,
+.history {
+  scrollbar-width: none;
+}
+.result::-webkit-scrollbar,
+.history::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- Buttons ---------- */
+.keys .btn {
+  height: 58px;
+  font-size: 1.25rem;
+  border-radius: 14px;
+  transition: transform 0.08s ease;
+}
+
+.keys .btn:active {
+  transform: scale(0.94);
+}
+
+/* Number keys */
+.key-num {
+  background: var(--bs-tertiary-bg);
+  color: var(--bs-body-color);
+  border: 1px solid var(--bs-border-color);
+}
+
+/* Function keys: AC, DEL, ( ) % */
+.key-fn {
+  background: var(--bs-secondary-bg);
+  color: var(--bs-body-color);
+  border: 1px solid var(--bs-border-color);
+}
+
+.key-num:hover,
+.key-fn:hover {
+  background: var(--bs-border-color);
+  color: var(--bs-body-color);
+}
+
+/* ---------- History list ---------- */
+.history-item {
+  cursor: pointer;
+  text-align: right;
+}
+
+.history-item:hover {
+  background: var(--bs-tertiary-bg);
+}
+
+.history-expression {
+  font-size: 0.9rem;
+  color: var(--bs-secondary-color);
+}
+
+.history-answer {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* ---------- Responsive rules ---------- */
+@media (min-width: 768px) {
+  .display {
+    min-height: 120px;
+  }
+  .result {
+    font-size: 2.8rem;
+  }
+  .result.small-text {
+    font-size: 1.8rem;
+  }
+  .keys .btn {
+    height: 66px;
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .result {
+    font-size: 1.9rem;
+  }
+  .keys .btn {
+    height: 50px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-height: 520px) {
+  .display {
+    min-height: 70px;
+  }
+  .keys .btn {
+    height: 38px;
+    font-size: 1rem;
+  }
+}

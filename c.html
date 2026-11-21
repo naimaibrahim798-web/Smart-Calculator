@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Smart Calculator</title>
+
+    <!-- Bootstrap 5.3.3 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Our own CSS -->
+    <link rel="stylesheet" href="c.css" />
+  </head>
+  <body>
+    <div
+      class="container min-vh-100 d-flex align-items-center justify-content-center py-3"
+    >
+      <div class="row w-100 justify-content-center">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-5 col-xl-4">
+          <main class="card calculator shadow-lg border-0 rounded-5">
+            <div class="card-body p-3 p-md-4">
+              <!-- Top bar: title + history button + theme button -->
+              <div
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+                <h1 class="h5 mb-0">Smart Calculator</h1>
+                <div class="d-flex gap-2">
+                  <button
+                    type="button"
+                    id="historyBtn"
+                    class="btn btn-sm btn-outline-secondary"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#historyPanel"
+                    aria-label="Open calculation history"
+                  >
+                    🕘 History
+                  </button>
+                  <button
+                    type="button"
+                    id="themeBtn"
+                    class="btn btn-sm btn-outline-secondary"
+                    aria-label="Switch dark or light mode"
+                  >
+                    ☀️
+                  </button>
+                </div>
+              </div>
+
+              <!-- Display -->
+              <div class="display text-end rounded-4 p-3 mb-3">
+                <div id="history" class="history"></div>
+                <div id="result" class="result" aria-live="polite">0</div>
+              </div>
+
+              <!-- Buttons -->
+              <div class="keys">
+                <div class="row g-2 mb-2">
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn key-fn w-100"
+                      data-action="clear"
+                    >
+                      AC
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn key-fn w-100"
+                      data-action="delete"
+                      aria-label="Delete last character"
+                    >
+                      DEL
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn key-fn w-100"
+                      data-value="("
+                    >
+                      (
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn key-fn w-100"
+                      data-value=")"
+                    >
+                      )
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row g-2 mb-2">
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn key-num w-100"
+                      data-value="7"
+                    >
+                      7
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn key-num w-100"
+                      data-value="8"
+                    >
+                      8
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn key-num w-100"
+                      data-value="9"
+                    >
+                      9
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-warning w-100"
+                      data-value="÷"
+                    >
+                      ÷
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row g-2 mb-2">
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn key-num w-100"
+                      data-value="4"
+                    >
+                      4
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn key-num w-100"
+                      data-value="5"
+                    >
+                      5
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn key-num w-100"
+                      data-value="6"
+                    >
+                      6
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-warning w-100"
+                      data-value="×"
+                    >
+                      ×
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row g-2 mb-2">
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn key-num w-100"
+                      data-value="1"
+                    >
+                      1
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn key-num w-100"
+                      data-value="2"
+                    >
+                      2
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn key-num w-100"
+                      data-value="3"
+                    >
+                      3
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-warning w-100"
+                      data-value="−"
+                    >
+                      −
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row g-2 mb-2">
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn key-num w-100"
+                      data-value="0"
+                    >
+                      0
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn key-num w-100"
+                      data-value="."
+                    >
+                      .
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn key-fn w-100"
+                      data-value="%"
+                    >
+                      %
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-warning w-100"
+                      data-value="+"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row g-2">
+                  <div class="col-12">
+                    <button
+                      type="button"
+                      class="btn btn-success w-100"
+                      data-action="equals"
+                    >
+                      =
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- History panel (Bootstrap Offcanvas, slides in from the right) -->
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="historyPanel"
+      aria-labelledby="historyTitle"
+    >
+      <div class="offcanvas-header">
+        <h2 class="offcanvas-title h5" id="historyTitle">History</h2>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column">
+        <ul
+          id="historyList"
+          class="list-group list-group-flush flex-grow-1 overflow-auto"
+        ></ul>
+        <button
+          type="button"
+          id="clearHistoryBtn"
+          class="btn btn-outline-danger mt-3"
+        >
+          Clear history
+        </button>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Our own JavaScript -->
+    <script src="c.jav"></script>
+  </body>
+</html>
